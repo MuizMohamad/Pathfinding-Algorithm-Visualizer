@@ -17,12 +17,6 @@ root.configure(background = '#add8e6')
 blankC = tk.Canvas(root, height=50, width=50, bg='#add8e6',highlightthickness=0)
 blankC.grid(column = 0 , row = 0,sticky = "wens",pady = 0 ,padx = 0)
 
-blankC = tk.Canvas(root, height=50, width=600, bg='#add8e6',highlightthickness=0)
-blankC.grid(column = 1 , row = 0,sticky = "wens",pady = 0 ,padx = 0)
-
-blankC = tk.Canvas(root, height=600, width=50, bg='#add8e6',highlightthickness=0)
-blankC.grid(column = 0 , row = 1,sticky = "wens",pady = 0 ,padx = 0)
-
 blockage_state = []
 
 def set_text(text):
@@ -43,7 +37,6 @@ def apply_square_num():
 def create_path():
     
     w = c.winfo_width() # Get current width of canvas
-    #h = c.winfo_height() # Get current height of canvas
     
     squareNumTest = int(squareNumEntry.get())
     if (squareNumTest != cur_square_num):
@@ -138,9 +131,6 @@ def changeSquareColor(x,y,color):
 button_frame = tk.Frame(root,height = 600, width = 280, highlightthickness = 5)
 button_frame.grid(column = 2 , row = 1 ,padx = 20)
 button_frame.grid_propagate(0)
-
-#fillerCanvas1 = tk.Canvas(button_frame,height = 50, width = 270 , highlightthickness = 0)
-#fillerCanvas1.grid(column = 0 , row = 0 , pady = 0 , padx = 0)
 
 algoTxt = tk.Label(button_frame, text = 'Size' , bg = 'white' ,font = "Arial 25 bold", width = 11 , highlightthickness = 5)
 algoTxt.grid(column = 0 , row = 0, ipady = 10, padx = 0 , pady = (20,0))
