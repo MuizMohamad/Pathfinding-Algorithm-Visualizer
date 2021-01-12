@@ -1,6 +1,6 @@
 
-from Maze import Maze
-from Node import Node,A_StarMaze
+from Maze import Maze,A_StarMaze
+from Node import Node
 
 graph = { (0,0) : [(1,0),(0,1)],(1,0) : [(2,0)],(2,0):[], 
           (0,1) : [(0,2)] , (0,2) : [(0,3)] , (0,3) : [(1,3)],
@@ -132,7 +132,6 @@ def a_star(maze,start,target):
                     opened.append(n)
                 
 a_star(testmaze2,testmaze2.return_obj_ref((0,0)),testmaze2.return_obj_ref((3,3)))
-print(testmaze2.return_visited())
-print(testmaze2.return_path())          
+        
             
             

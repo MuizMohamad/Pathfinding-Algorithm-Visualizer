@@ -5,27 +5,25 @@ import time
 import tkinter as tk
 from tkinter import messagebox
 
-from Maze import Maze
+from Maze import Maze,A_StarMaze
 from Algorithms import dfs,bfs,a_star
-from Node import Node,A_StarMaze
 
 
 root = tk.Tk()
 root.title("Pathfinding Algorithm Visualiser")
 root.geometry('1120x900')
-root.configure(background = 'white')
+root.configure(background = '#add8e6')
 
-blankC = tk.Canvas(root, height=50, width=50, bg='white',highlightthickness=0)
+blankC = tk.Canvas(root, height=50, width=50, bg='#add8e6',highlightthickness=0)
 blankC.grid(column = 0 , row = 0,sticky = "wens",pady = 0 ,padx = 0)
 
-blankC = tk.Canvas(root, height=50, width=600, bg='white',highlightthickness=0)
+blankC = tk.Canvas(root, height=50, width=600, bg='#add8e6',highlightthickness=0)
 blankC.grid(column = 1 , row = 0,sticky = "wens",pady = 0 ,padx = 0)
 
-blankC = tk.Canvas(root, height=600, width=50, bg='white',highlightthickness=0)
+blankC = tk.Canvas(root, height=600, width=50, bg='#add8e6',highlightthickness=0)
 blankC.grid(column = 0 , row = 1,sticky = "wens",pady = 0 ,padx = 0)
 
 blockage_state = []
-
 
 def set_text(text):
     squareNumEntry.delete(0,tk.END)
@@ -34,6 +32,7 @@ def set_text(text):
 
 def apply_square_num():
     cur_square_num = int(squareNumEntry.get())
+    reset = False
     if (cur_square_num <= 30 and cur_square_num >= 2):
         create_grid()
     else :
@@ -48,8 +47,11 @@ def create_path():
     
     squareNumTest = int(squareNumEntry.get())
     if (squareNumTest != cur_square_num):
+        
         tk.messagebox.showerror("Error", "Click apply button to change dimension first")
+        
     else :
+        
         reset_maze()
         chosenAlgo = v.get()
         size_init = w/cur_square_num
@@ -154,11 +156,18 @@ squareNumEntry = tk.Entry(sqNumFrame, width= 5 ,bd = 5,font = "Helvetica 12 bold
 set_text('30')
 squareNumEntry.grid(column = 1 , row = 1, ipady = 3,pady = (30,0) , padx = 0)
 
-squareNumButton = tk.Button(button_frame,text = "Apply size",font = "Helvetica 15 bold", command = apply_square_num)
-squareNumButton.grid(column = 0 , row = 2, padx = 50 , pady = (10,10))
+sizeBFrame = tk.Frame(button_frame,height = 50, width = 270)
+sizeBFrame.grid_propagate(0)
+sizeBFrame.grid(column = 0 , row = 2, pady = 0, padx = 0, ipadx = 0, ipady = 0)
+
+resetButton = tk.Button(sizeBFrame,text = "Reset maze" , font = "Helvetica 12 bold", command = apply_square_num)
+resetButton.grid(column = 0 , row = 0,padx = (30,20))
+
+applySizeButton = tk.Button(sizeBFrame,text = "Apply size",font = "Helvetica 12 bold", command = apply_square_num)
+applySizeButton.grid(column = 1, row = 0)
 
 algoTxt = tk.Label(button_frame, text = 'Algorithms' , bg = 'white' ,font = "Arial 25 bold", width = 11 , highlightthickness = 5)
-algoTxt.grid(column = 0 , row = 3, ipady = 10, padx = 0 , pady = (50,0))
+algoTxt.grid(column = 0 , row = 3, ipady = 10, padx = 0 , pady = (5,0))
 
 algoRBFrame = tk.Frame(button_frame,height = 100, width = 270)
 algoRBFrame.grid_propagate(0)
@@ -188,9 +197,11 @@ def create_grid(event=None):
     
     blockage_state.clear()
     c.delete('grid_line') # Will only remove the grid_line
-    c.create_rectangle(0,0,w,h,fill = 'black',outline = 'black',width = 2)
+    c.create_rectangle(0,0,w,h,fill = '#add8e6',outline = 'black',width = 0)
     
     global cur_square_num
+    global reset
+    
     cur_square_num = int(squareNumEntry.get())
     size_init = w/cur_square_num
     size = floor(size_init)
@@ -235,7 +246,7 @@ def reset_maze():
 
 
   
-c = tk.Canvas(root, height= canvasHeight, width=canvasWidth, bg='black',highlightthickness=0)
+c = tk.Canvas(root, height= canvasHeight, width=canvasWidth, bg='#add8e6',highlightthickness=0)
 c.grid(column = 1 , row = 1, sticky = "wens",pady = 0 ,padx = 0)
 
 c.bind('<Configure>', create_grid)
