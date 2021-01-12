@@ -131,7 +131,7 @@ def a_star(maze,start,target):
                 if n not in opened:
                     opened.append(n)
                 
-a_star(testmaze2,testmaze2.return_obj_ref((0,0)),testmaze2.return_obj_ref((3,3)))
+
         
             
             
