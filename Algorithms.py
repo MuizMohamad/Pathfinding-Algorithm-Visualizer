@@ -9,13 +9,7 @@ graph = { (0,0) : [(1,0),(0,1)],(1,0) : [(2,0)],(2,0):[],
 graph1 = { (0,0) : [(1,0),(0,1)],(1,0) : [(2,0)],(2,0):[], 
           (0,1) : [(0,2)] , (0,2) : [] }
 
-#actualPath = []
-#visited = []
-
 blockage_state = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[1,1,1,0]]
-
-testMaze = Maze(4)
-testMaze.update_blockage(blockage_state)
 
 def dfs(path, visited, graph, node, target):
     
@@ -83,10 +77,6 @@ def bfs(graph_to_search, start, end):
 
             # Mark the vertex as visited
             visited.append(vertex)
-
-
-testmaze2 = A_StarMaze(4)
-testmaze2.update_blockage(blockage_state)
 
 def a_star(maze,start,target):
     
