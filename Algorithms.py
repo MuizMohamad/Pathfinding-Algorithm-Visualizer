@@ -54,6 +54,7 @@ def dfs(path, visited, graph, node, target):
 
 
 def bfs(graph_to_search, start, end):
+    
     queue = [[start]]
     visited = []
 
@@ -96,8 +97,6 @@ def a_star(maze,start,target):
         visited.append(currentNode.return_coordinate())
         
         if (currentNode == target):
-            testmaze2.update_path(maze.retrace_path(start,currentNode)) 
-            testmaze2.update_visited(visited)
             return (maze.retrace_path(start,currentNode),visited)
         
         try :
