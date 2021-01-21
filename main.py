@@ -13,6 +13,7 @@ root = tk.Tk()
 root.title("Pathfinding Algorithm Visualiser")
 root.geometry('1120x900')
 root.configure(background = '#add8e6')
+root.resizable(False,False)
 
 blankC = tk.Canvas(root, height=50, width=50, bg='#add8e6',highlightthickness=0)
 blankC.grid(column = 0 , row = 0,sticky = "wens",pady = 0 ,padx = 0)
