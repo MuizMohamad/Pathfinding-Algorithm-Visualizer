@@ -19,6 +19,7 @@ blankC = tk.Canvas(root, height=50, width=50, bg='#add8e6',highlightthickness=0)
 blankC.grid(column = 0 , row = 0,sticky = "wens",pady = 0 ,padx = 0)
 
 blockage_state = []
+cur_square_num = 30
 
 def set_text(text):
     squareNumEntry.delete(0,tk.END)
@@ -26,8 +27,10 @@ def set_text(text):
     return
 
 def apply_square_num():
+    
+    global cur_square_num
+    
     cur_square_num = int(squareNumEntry.get())
-    reset = False
     if (cur_square_num <= 30 and cur_square_num >= 2):
         create_grid()
     else :
@@ -35,7 +38,15 @@ def apply_square_num():
     
     return
 
+def reset_maze():
+    
+    create_grid()
+    
+    return
+    
 def create_path():
+    
+    global cur_square_num
     
     w = c.winfo_width() # Get current width of canvas
     
@@ -46,7 +57,7 @@ def create_path():
         
     else :
         
-        reset_maze()
+        clear_path()
         chosenAlgo = v.get()
         size_init = w/cur_square_num
         size = floor(size_init)
@@ -118,6 +129,8 @@ def changeSquareColor(x,y,color):
     w = c.winfo_width() # Get current width of canvas
     #h = c.winfo_height() # Get current height of canvas
     
+    global cur_square_num
+    
     size_init = w/cur_square_num
     size = floor(size_init)
     x_grid = x*size
@@ -151,7 +164,7 @@ sizeBFrame = tk.Frame(button_frame,height = 50, width = 270)
 sizeBFrame.grid_propagate(0)
 sizeBFrame.grid(column = 0 , row = 2, pady = 0, padx = 0, ipadx = 0, ipady = 0)
 
-resetButton = tk.Button(sizeBFrame,text = "Reset maze" , font = "Helvetica 12 bold", command = apply_square_num)
+resetButton = tk.Button(sizeBFrame,text = "Reset maze" , font = "Helvetica 12 bold", command = reset_maze)
 resetButton.grid(column = 0 , row = 0,padx = (30,20))
 
 applySizeButton = tk.Button(sizeBFrame,text = "Apply size",font = "Helvetica 12 bold", command = apply_square_num)
@@ -191,9 +204,7 @@ def create_grid(event=None):
     c.create_rectangle(0,0,w,h,fill = '#add8e6',outline = 'black',width = 0)
     
     global cur_square_num
-    global reset
     
-    cur_square_num = int(squareNumEntry.get())
     size_init = w/cur_square_num
     size = floor(size_init)
     end = size*cur_square_num
@@ -214,14 +225,14 @@ def create_grid(event=None):
     startMaze = (0,0)
     endMaze = (end-size,end-size)
 
-def reset_maze():
+def clear_path():
     
     w = c.winfo_width() # Get current width of canvas
     
     c.delete('grid_line') # Will only remove the grid_line
     
     global cur_square_num
-    cur_square_num = int(squareNumEntry.get())
+    
     size_init = w/cur_square_num
     size = floor(size_init)
     end = size*cur_square_num
@@ -247,8 +258,8 @@ def click_square(event):
     w = c.winfo_width() # Get current width of canvas
     h = c.winfo_height() # Get current height of canvas
     
-    squareNum = int(squareNumEntry.get())
-    size = min(floor(w/squareNum),floor(h/squareNum))
+    global cur_square_num
+    size = min(floor(w/cur_square_num),floor(h/cur_square_num))
     
     x = floor(event.x/size) * size
     y = floor(event.y/size) * size
