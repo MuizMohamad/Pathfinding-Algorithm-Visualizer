@@ -8,14 +8,15 @@ from tkinter import messagebox
 from Maze import Maze,A_StarMaze
 from Algorithms import dfs,bfs,a_star
 
+bgColor = '#FFD992'
 
 root = tk.Tk()
 root.title("Pathfinding Algorithm Visualiser")
 root.geometry('1120x900')
-root.configure(background = '#add8e6')
+root.configure(background = bgColor)
 root.resizable(False,False)
 
-blankC = tk.Canvas(root, height=50, width=50, bg='#add8e6',highlightthickness=0)
+blankC = tk.Canvas(root, height=50, width=50, bg=bgColor,highlightthickness=0)
 blankC.grid(column = 0 , row = 0,sticky = "wens",pady = 0 ,padx = 0)
 
 blockage_state = []
@@ -148,25 +149,25 @@ def changeSquareColor(x,y,color):
         c.create_rectangle(x_grid,y_grid,x_grid+size,y_grid+size,fill = color,outline = 'black',width = 2)
 
      
-button_frame = tk.Frame(root,height = 600, width = 280, highlightthickness = 5)
+button_frame = tk.Frame(root,height = 600, width = 280, highlightthickness = 5, bg = '#6D4700', highlightbackground= '#5B3B00')
 button_frame.grid(column = 2 , row = 1 ,padx = 20)
 button_frame.grid_propagate(0)
 
-algoTxt = tk.Label(button_frame, text = 'Size' , bg = 'white' ,font = "Arial 25 bold", width = 11 , highlightthickness = 5)
-algoTxt.grid(column = 0 , row = 0, ipady = 10, padx = 0 , pady = (20,0))
+algoTxt = tk.Label(button_frame, text = 'Size' , bg = '#FFDFA4' ,font = "Arial 25 bold", width = 11 , highlightthickness = 5)
+algoTxt.grid(column = 0 , row = 0, ipady = 10, padx = 0 , pady = (10,10))
 
-sqNumFrame = tk.Frame(button_frame,height = 100, width = 270)
+sqNumFrame = tk.Frame(button_frame,height = 100, width = 270, bg = '#FFCC6D')
 sqNumFrame.grid(column = 0 , row = 1)
 sqNumFrame.grid_propagate(0)
 
-sqNumButtonText = tk.Label(sqNumFrame, text = 'Maze size ( 2-30 ) ' ,font = "Arial 15" ,height = 0 , width = 15 )
+sqNumButtonText = tk.Label(sqNumFrame, text = 'Maze size ( 2-30 ) ' ,font = "Arial 15" , bg = '#FFCC6D',height = 0 , width = 15 )
 sqNumButtonText.grid(column = 0 , row = 1,pady = (30,0) , padx = (20,0) )
 
 squareNumEntry = tk.Entry(sqNumFrame, width= 5 ,bd = 5,font = "Helvetica 12 bold",justify = tk.CENTER)
 set_text('30')
 squareNumEntry.grid(column = 1 , row = 1, ipady = 3,pady = (30,0) , padx = 0)
 
-sizeBFrame = tk.Frame(button_frame,height = 50, width = 270)
+sizeBFrame = tk.Frame(button_frame,height = 50, width = 270, bg = '#FFCC6D')
 sizeBFrame.grid_propagate(0)
 sizeBFrame.grid(column = 0 , row = 2, pady = 0, padx = 0, ipadx = 0, ipady = 0)
 
@@ -176,33 +177,33 @@ resetButton.grid(column = 0 , row = 0,padx = (30,20))
 applySizeButton = tk.Button(sizeBFrame,text = "Apply size",font = "Helvetica 12 bold", command = apply_square_num)
 applySizeButton.grid(column = 1, row = 0)
 
-algoTxt = tk.Label(button_frame, text = 'Algorithms' , bg = 'white' ,font = "Arial 25 bold", width = 11 , highlightthickness = 5)
-algoTxt.grid(column = 0 , row = 3, ipady = 10, padx = 0 , pady = (5,0))
+algoTxt = tk.Label(button_frame, text = 'Algorithms' , bg = '#FFDFA4' ,font = "Arial 25 bold", width = 11 , highlightthickness = 5)
+algoTxt.grid(column = 0 , row = 3, ipady = 10, padx = 0 , pady = (10,10))
 
-algoRBFrame = tk.Frame(button_frame,height = 100, width = 270)
+algoRBFrame = tk.Frame(button_frame,height = 100, width = 270, bg = '#FFCC6D')
 algoRBFrame.grid_propagate(0)
 algoRBFrame.grid(column = 0 , row = 4, pady = 0, padx = 0, ipadx = 0, ipady = 0)
 
 v = tk.StringVar(algoRBFrame,"dfs")
 
-dfsRadioButton =  tk.Radiobutton(algoRBFrame, variable = v,text= 'DFS', value = 'dfs',font = "Helvetica 15 bold")
+dfsRadioButton =  tk.Radiobutton(algoRBFrame, variable = v,text= 'DFS', value = 'dfs',font = "Helvetica 15 bold" , bg = '#FFCC6D')
 dfsRadioButton.grid(column = 0 , row = 0, pady = (20,0), padx = (50,20))
 
-bfsRadioButton =  tk.Radiobutton(algoRBFrame, variable = v,text= 'BFS', value = 'bfs',font = "Helvetica 15 bold")
+bfsRadioButton =  tk.Radiobutton(algoRBFrame, variable = v,text= 'BFS', value = 'bfs',font = "Helvetica 15 bold", bg = '#FFCC6D')
 bfsRadioButton.grid(column = 1 , row = 0, pady = (20,0) , padx = 0)
 
-astar_RadioButton =  tk.Radiobutton(algoRBFrame, variable = v,text= 'A*', value = 'astar',font = "Helvetica 15 bold")
+astar_RadioButton =  tk.Radiobutton(algoRBFrame, variable = v,text= 'A*', value = 'astar',font = "Helvetica 15 bold", bg = '#FFCC6D')
 astar_RadioButton.grid(column = 0 , row = 1, pady = 0 , padx = (30,20))
 
-pathBFrame = tk.Frame(button_frame,height = 50, width = 270)
+pathBFrame = tk.Frame(button_frame,height = 50, width = 270 , bg ='#FFCC6D')
 pathBFrame.grid_propagate(0)
-pathBFrame.grid(column = 0 , row = 5, pady = (20,0), padx = 0, ipadx = 0, ipady = 0)
+pathBFrame.grid(column = 0 , row = 5, pady = (0,0), padx = 0, ipadx = 0, ipady = 0)
 
 resetPathButton = tk.Button(pathBFrame,font = "Helvetica 12 bold" ,text = "Reset path", command = reset_path)
-resetPathButton.grid(column = 0 , row = 0, padx = (20,10))
+resetPathButton.grid(column = 0 , row = 0, padx = (20,10), pady = 10)
 
 createPathButton = tk.Button(pathBFrame,font = "Helvetica 12 bold" ,text = "Visualize path", command = create_path)
-createPathButton.grid(column = 1 , row = 0, padx = (10,0))
+createPathButton.grid(column = 1 , row = 0, padx = (10,0) , pady = 10)
 
 
 canvasHeight = 750
