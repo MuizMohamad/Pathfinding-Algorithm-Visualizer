@@ -43,7 +43,13 @@ def reset_maze():
     create_grid()
     
     return
+
+def reset_path():
     
+    clear_path()
+    
+    return     
+
 def create_path():
     
     global cur_square_num
@@ -188,8 +194,15 @@ bfsRadioButton.grid(column = 1 , row = 0, pady = (20,0) , padx = 0)
 astar_RadioButton =  tk.Radiobutton(algoRBFrame, variable = v,text= 'A*', value = 'astar',font = "Helvetica 15 bold")
 astar_RadioButton.grid(column = 0 , row = 1, pady = 0 , padx = (30,20))
 
-createPathButton = tk.Button(button_frame,font = "Helvetica 15 bold" ,text = "Visualize path", command = create_path)
-createPathButton.grid(column = 0 , row = 5,pady = 20)
+pathBFrame = tk.Frame(button_frame,height = 50, width = 270)
+pathBFrame.grid_propagate(0)
+pathBFrame.grid(column = 0 , row = 5, pady = (20,0), padx = 0, ipadx = 0, ipady = 0)
+
+resetPathButton = tk.Button(pathBFrame,font = "Helvetica 12 bold" ,text = "Reset path", command = reset_path)
+resetPathButton.grid(column = 0 , row = 0, padx = (20,10))
+
+createPathButton = tk.Button(pathBFrame,font = "Helvetica 12 bold" ,text = "Visualize path", command = create_path)
+createPathButton.grid(column = 1 , row = 0, padx = (10,0))
 
 
 canvasHeight = 750
