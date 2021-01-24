@@ -12,7 +12,7 @@ bgColor = '#FFD992'
 
 root = tk.Tk()
 root.title("Pathfinding Algorithm Visualiser")
-root.geometry('1120x900')
+root.geometry('1120x850')
 root.configure(background = bgColor)
 root.resizable(False,False)
 
@@ -292,5 +292,7 @@ def click_square(event):
         
     
 c.bind('<Button-1>',click_square)
+#c.bind('<ButtonPress-1>',click_square)
+#c.bind('<ButtonRelease-1>',click_square)
 
 root.mainloop()
