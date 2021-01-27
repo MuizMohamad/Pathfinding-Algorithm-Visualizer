@@ -1,9 +1,9 @@
 
 from math import floor
 
-import time
+#import time
 import tkinter as tk
-from tkinter import messagebox
+#from tkinter import messagebox
 
 from Maze import Maze,A_StarMaze
 from Algorithms import dfs,bfs,a_star
@@ -215,7 +215,7 @@ def create_grid(event=None):
     
     blockage_state.clear()
     c.delete('grid_line') # Will only remove the grid_line
-    c.create_rectangle(0,0,w,h,fill = '#add8e6',outline = 'black',width = 0)
+    c.create_rectangle(0,0,w,h,fill = '#FFD992',outline = 'black',width = 0)
     
     global cur_square_num
     
@@ -260,9 +260,7 @@ def clear_path():
                 c.create_rectangle(x,y,x+size,y+size,fill = 'orange',outline = 'black',width = 2)
            
 
-
-  
-c = tk.Canvas(root, height= canvasHeight, width=canvasWidth, bg='#add8e6',highlightthickness=0)
+c = tk.Canvas(root, height= canvasHeight, width=canvasWidth, bg='#FFD992',highlightthickness=0)
 c.grid(column = 1 , row = 1, sticky = "wens",pady = 0 ,padx = 0)
 
 c.bind('<Configure>', create_grid)
