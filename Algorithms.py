@@ -2,15 +2,6 @@
 from Maze import Maze,A_StarMaze
 from Node import Node
 
-graph = { (0,0) : [(1,0),(0,1)],(1,0) : [(2,0)],(2,0):[], 
-          (0,1) : [(0,2)] , (0,2) : [(0,3)] , (0,3) : [(1,3)],
-          (1,3) : [(2,3)] , (2,3) : [(3,3)], (3,3) : []}
-
-graph1 = { (0,0) : [(1,0),(0,1)],(1,0) : [(2,0)],(2,0):[], 
-          (0,1) : [(0,2)] , (0,2) : [] }
-
-blockage_state = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[1,1,1,0]]
-
 def dfs(path, visited, graph, node, target):
     
     visited.append(node)
