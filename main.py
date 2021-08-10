@@ -1,9 +1,7 @@
 
 from math import floor
 
-#import time
 import tkinter as tk
-#from tkinter import messagebox
 
 from Maze import Maze,A_StarMaze
 from Algorithms import dfs,bfs,a_star

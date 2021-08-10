@@ -70,15 +70,15 @@ class Visualizer:
         self.algoRBFrame.grid_propagate(0)
         self.algoRBFrame.grid(column = 0 , row = 4, pady = 0, padx = 0, ipadx = 0, ipady = 0)
 
-        v = tk.StringVar(self.algoRBFrame,"dfs")
+        self.v = tk.StringVar(self.algoRBFrame,"dfs")
 
-        self.dfsRadioButton =  tk.Radiobutton(self.algoRBFrame, variable = v,text= 'DFS', value = 'dfs',font = "Helvetica 15 bold" , bg = '#FFCC6D')
+        self.dfsRadioButton =  tk.Radiobutton(self.algoRBFrame, variable = self.v,text= 'DFS', value = 'dfs',font = "Helvetica 15 bold" , bg = '#FFCC6D')
         self.dfsRadioButton.grid(column = 0 , row = 0, pady = (20,0), padx = (50,20))
 
-        self.bfsRadioButton =  tk.Radiobutton(self.algoRBFrame, variable = v,text= 'BFS', value = 'bfs',font = "Helvetica 15 bold", bg = '#FFCC6D')
+        self.bfsRadioButton =  tk.Radiobutton(self.algoRBFrame, variable = self.v,text= 'BFS', value = 'bfs',font = "Helvetica 15 bold", bg = '#FFCC6D')
         self.bfsRadioButton.grid(column = 1 , row = 0, pady = (20,0) , padx = 0)
 
-        self.astar_RadioButton =  tk.Radiobutton(self.algoRBFrame, variable = v,text= 'A*', value = 'astar',font = "Helvetica 15 bold", bg = '#FFCC6D')
+        self.astar_RadioButton =  tk.Radiobutton(self.algoRBFrame, variable = self.v,text= 'A*', value = 'astar',font = "Helvetica 15 bold", bg = '#FFCC6D')
         self.astar_RadioButton.grid(column = 0 , row = 1, pady = 0 , padx = (30,20))
 
         self.pathBFrame = tk.Frame(self.button_frame,height = 50, width = 270 , bg ='#FFCC6D')
@@ -270,7 +270,7 @@ class Visualizer:
         j = floor(y/size)
     
         endOrStart = ((x,y) == self.start_maze or (x,y) == self.end_maze)
-            
+
         if (not endOrStart):
             if (self.blockage_state[i][j] == 0):
                 self.c.create_rectangle(x,y,x+size,y+size,fill = 'red',outline = 'black',width = 2)
