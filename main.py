@@ -6,7 +6,7 @@ import tkinter as tk
 from Maze import Maze,A_StarMaze
 from Algorithms import dfs,bfs,a_star
 
-from GUIFunctions import Visualizer
+from Visualizer import Visualizer
 
 bgColor = '#FFD992'
 
